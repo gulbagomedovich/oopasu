@@ -1,0 +1,12 @@
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\bin\Debug\net5.0\OOPASU.Domain.deps.json
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\bin\Debug\net5.0\OOPASU.Domain.dll
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\bin\Debug\net5.0\ref\OOPASU.Domain.dll
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\bin\Debug\net5.0\OOPASU.Domain.pdb
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\obj\Debug\net5.0\OOPASU.Domain.csproj.AssemblyReference.cache
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\obj\Debug\net5.0\OOPASU.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\obj\Debug\net5.0\OOPASU.Domain.AssemblyInfoInputs.cache
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\obj\Debug\net5.0\OOPASU.Domain.AssemblyInfo.cs
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\obj\Debug\net5.0\OOPASU.Domain.csproj.CoreCompileInputs.cache
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\obj\Debug\net5.0\OOPASU.Domain.dll
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\obj\Debug\net5.0\ref\OOPASU.Domain.dll
+C:\Users\gulba\source\repos\OOPASU\OOPASU.Domain\obj\Debug\net5.0\OOPASU.Domain.pdb
