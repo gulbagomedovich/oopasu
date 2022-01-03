@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using OOPASU.Domain;
 using OOPASU.Infrastructure;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OOPASU.API.Controllers
@@ -19,9 +20,9 @@ namespace OOPASU.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ClassRoom>>> GetClassRooms()
+        public IEnumerable<ClassRoom> GetClassRooms()
         {
-            return await _context.ClassRooms.ToListAsync();
+            return _context.ClassRooms.ToList();
         }
 
         [HttpGet]

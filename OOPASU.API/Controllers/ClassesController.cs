@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using OOPASU.Domain;
-using OOPASU.Infrastructure;
+using OOPASU.Infrastructure.Repository;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace OOPASU.API.Controllers
 {
@@ -11,62 +9,47 @@ namespace OOPASU.API.Controllers
     [ApiController]
     public class ClassesController : Controller
     {
-        private readonly Context _context;
+        private IClassRepository classRepository;
 
-        public ClassesController(Context context)
+        public ClassesController(IClassRepository classRepository)
         {
-            _context = context;
+            this.classRepository = classRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Class>>> GetClasses()
+        public IEnumerable<Class> GetClasses()
         {
-            return await _context.Classes.ToListAsync();
+            return classRepository.GetClasses();
         }
 
         [HttpGet]
         [Route("{ClassId}")]
-        public async Task<ActionResult<Class>> GetClass(int ClassId)
+        public Class GetClass(int ClassId)
         {
-            return await _context.Classes.FirstAsync(c => c.ClassId == ClassId);
+            return classRepository.GetClassByID(ClassId);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Class>> AddClass(Class c)
+        public Class AddClass(Class c)
         {
-            _context.Add(c);
-            await _context.SaveChangesAsync();
+            classRepository.AddClass(c);
             return c;
         }
 
         [HttpPut]
         [Route("{ClassId}")]
-        public async Task<ActionResult<Class>> UpdateClass([FromRoute] int ClassId,
+        public Class UpdateClass([FromRoute] int ClassId,
             [FromBody] Class Class)
         {
-            var c = await _context.Classes.FirstAsync(d => d.ClassId == ClassId);
-            c.Topic = Class.Topic;
-            c.StartDate = Class.StartDate;
-            c.EndDate = Class.EndDate;
-            c.Status = Class.Status;
-            c.GroupId = Class.GroupId;
-            c.TeacherId = Class.TeacherId;
-            c.ClassRoomId = Class.ClassRoomId;
-            c.DisciplineId = Class.DisciplineId;
-            c.Visits = Class.Visits;
-            c.Students = Class.Students;
-            await _context.SaveChangesAsync();
-            return c;
+            classRepository.UpdateClass(ClassId, Class);
+            return classRepository.GetClassByID(ClassId);
         }
 
         [HttpDelete]
         [Route("{ClassId}")]
-        public async Task<ActionResult> DeleteClass(int ClassId)
+        public void DeleteClass(int ClassId)
         {
-            var c = await _context.Classes.FirstAsync(c => c.ClassId == ClassId);
-            _context.Remove(c);
-            await _context.SaveChangesAsync();
-            return Ok();
+            classRepository.DeleteClass(ClassId);
         }
     }
 }

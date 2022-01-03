@@ -24,25 +24,25 @@ namespace OOPASU.Infrastructure
                 .HasOne(c => c.ClassRoom)
                 .WithMany(cr => cr.Classes)
                 .HasForeignKey(c => c.ClassRoomId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Class>()
                 .HasOne(c => c.Teacher)
                 .WithMany(t => t.Classes)
                 .HasForeignKey(c => c.TeacherId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Class>()
                 .HasOne(c => c.Discipline)
                 .WithMany(d => d.Classes)
                 .HasForeignKey(c => c.DisciplineId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Class>()
                 .HasOne(c => c.Group)
                 .WithMany(g => g.Classes)
                 .HasForeignKey(c => c.GroupId)
-                .OnDelete(DeleteBehavior.ClientSetNull);
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Class>()
             .HasMany(c => c.Students)

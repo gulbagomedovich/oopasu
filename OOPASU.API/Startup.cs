@@ -9,6 +9,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using OOPASU.Infrastructure;
+using OOPASU.Infrastructure.Repository;
+using OOPASU.Infrastructure.Repository.impl;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,6 +35,7 @@ namespace OOPASU.API
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("OOPASU"))
             );
+            services.AddScoped<IClassRepository, ClassRepository>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "OOPASU.API", Version = "v1" });
