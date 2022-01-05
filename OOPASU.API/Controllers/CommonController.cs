@@ -29,19 +29,18 @@ namespace OOPASU.API.Controllers
 
         [HttpGet]
         [Route("students")]
-        public ActionResult GetStudentsByGroupId([FromQuery(Name = "groupId")] int groupId)
+        public ActionResult GetStudentsByGroupId(
+                [FromQuery(Name = "classId")] int classId,
+                [FromQuery(Name = "groupId")] int groupId
+            )
         {
+            ViewData["ClassId"] = classId;
+
             List<Student> students = context.Students.Where(s => s.GroupId == groupId).ToList();
             ViewData["Students"] = students;
 
-            return View();
-        }
 
-        [HttpGet]
-        [Route("visits")]
-        public ActionResult GetVisits()
-        {
-            List<Visit> visits = (List<Visit>)context.Visits.ToList();
+            List<Visit> visits = context.Visits.ToList();
             ViewData["Visits"] = visits;
 
             return View();
@@ -49,7 +48,7 @@ namespace OOPASU.API.Controllers
 
         [HttpPut]
         [Route("visits")]
-        public void PostVisit(
+        public void PutVisit(
             [FromQuery(Name = "classId")] int classId,
             [FromQuery(Name = "studentId")] int studentId,
             [FromQuery(Name = "status")] string status)
