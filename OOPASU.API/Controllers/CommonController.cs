@@ -19,32 +19,32 @@ namespace OOPASU.API.Controllers
 
         [HttpGet]
         [Route("classes")]
-        public IEnumerable<Class> GetClasses()
+        public ActionResult GetClasses()
         {
             List<Class> classes = (List<Class>)context.Classes.ToList();
             ViewData["Classes"] = classes;
 
-            return classes;
+            return View();
         }
 
         [HttpGet]
         [Route("students")]
-        public IEnumerable<Student> GetStudentsByGroupId([FromQuery(Name = "groupId")] int groupId)
+        public ActionResult GetStudentsByGroupId([FromQuery(Name = "groupId")] int groupId)
         {
             List<Student> students = context.Students.Where(s => s.GroupId == groupId).ToList();
             ViewData["Students"] = students;
 
-            return students;
+            return View();
         }
 
         [HttpGet]
         [Route("visits")]
-        public IEnumerable<Visit> GetVisits()
+        public ActionResult GetVisits()
         {
             List<Visit> visits = (List<Visit>)context.Visits.ToList();
             ViewData["Visits"] = visits;
 
-            return visits;
+            return View();
         }
 
         [HttpPut]
